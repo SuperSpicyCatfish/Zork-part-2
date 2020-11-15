@@ -3,7 +3,7 @@
 //  CLASS:          CPSC - 233j
 //  TEACHER:        Professor McCarthy
 //  TIME:           T-Th 8:00am-9:45am
-//  DUE:            November 1, 2020
+//  DUE:            November 21, 2020
 //
 
 package com.company;
