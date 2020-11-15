@@ -145,7 +145,7 @@ class Room {
 }
 
     // ***************** UNSURE ***********************
-    public Items getItems(int itemIndex){ // returns a specific item??
+    public Items getItems(int itemIndex){ // returns a specific item
         return aItemsRoom.get(itemIndex);
     }
 
