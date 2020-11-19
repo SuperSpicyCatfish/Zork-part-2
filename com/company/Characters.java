@@ -94,7 +94,7 @@ class Characters{
     	aItems.add(someWeapon);
     }
 
-    public ArrayList getCharsInventory(){// game uses this to calculate the players score
+    public ArrayList<Items> getCharsInventory(){// game uses this to calculate the players score
     	return aItems;
 	}
 

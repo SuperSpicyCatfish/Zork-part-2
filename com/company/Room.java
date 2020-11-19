@@ -25,8 +25,8 @@ enum Direction {
     NORTH, // 0
     SOUTH, // 1
     EAST,  // 2
-    WEST;  // 3
-    UP;	   // 4
+    WEST,  // 3
+    UP,	   // 4
     DOWN;  // 5
     public static final int noExit = -1;
 };
@@ -39,9 +39,9 @@ class Room {
     private String description;
     private ArrayList<Items> aItemsRoom = new ArrayList<Items>(); // Items in a room
 
-    // we do not use up and down    
-    private int north, south, west, east, up, down;
-    // private int up,down;
+
+    private int north, south, west, east, up, down; // ** new ** 
+    
 
     // Start of Telescoping Constructors
     public Room(){
@@ -69,6 +69,13 @@ class Room {
     }
 
     public Room(String name, String description, int n, int s, int w, int e) {
+        
+    }
+    public Room(String name, String description, int n, int s, int w, int e, int up){
+
+    }
+
+    public Room(String name, String description, int n, int s, int w, int e, int up, int down){
         this.name = name;
         this.description = description;
 
@@ -76,9 +83,11 @@ class Room {
         this.south = s;
         this.west = w;
         this.east = e;
-        // this.up = Direction.noExit;    // WE NEVER USE THIS
-        // this.down = Direction.notExit; // WE NEVER USE THIS
+        // ** new ** 
+        this.up = up;
+        this.down = down;
     }
+
     // End of Telescoping Constructors
 
     public String getName() {           // getter function
@@ -130,20 +139,20 @@ class Room {
 
     // up
     public int getUp(){					// getter function
-    	return up;
+    	return up;                      // ** new **
     }
 
     public void setUp(int up){			// setter function
-    	this.up = up;
+    	this.up = up;                   // ** new **
     }
 
     // down
     public int getDown(){				// getter function
-    	return down;
+    	return down;                    // ** new **
     }
 
     public void setDown(int down){		// setter function
-    	this.down = down;
+    	this.down = down;               // ** new **
     }
 
 
@@ -163,10 +172,10 @@ class Room {
             temp += "There is an exit west\n";
         }
         if(getUp() >= 0){
-        	temp += "There is an exit up above\n";
+        	temp += "There is an exit up above\n";             // ** new **
         }
         if(getDown() >= 0){
-        	temp += "There is an exit down below\n";
+        	temp += "There is an exit down below\n";           // ** new **
         }
         printItems(); // will print out the items in the room before the description and name of a room
         return temp;
@@ -214,6 +223,12 @@ class Room {
         else if(this.getW() == numberConnection){
             found = true;
         }
+        else if(this.getUp() == numberConnection){              // ** new **    
+            found = true;
+        }
+        else if(this.getDown() == numberConnection){            // ** new **
+            found = true;
+        }
 
         return found;
     }
@@ -229,7 +244,10 @@ class Game {
     private Characters playerChar;  // main character
     private ArrayList<Room> map;    // map of zork
     private int score;              // the player's score
+    private int moves;              // how many times the player moved
+
     // ************************************************
+    // ^^                                            ^^
     // Everytime a player moves, increment a counter.
     // We need to keep track of how many moves a player
     // took in order to win
@@ -364,6 +382,7 @@ class Game {
                 }
             }
          }
+         // if the player's inventory is empty, score is 0
         score = tempScore; // set the new score
     }
 
