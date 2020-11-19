@@ -26,6 +26,8 @@ enum Direction {
     SOUTH, // 1
     EAST,  // 2
     WEST;  // 3
+    UP;	   // 4
+    DOWN;  // 5
     public static final int noExit = -1;
 };
 
@@ -38,7 +40,7 @@ class Room {
     private ArrayList<Items> aItemsRoom = new ArrayList<Items>(); // Items in a room
 
     // we do not use up and down    
-    private int north, south, west, east;
+    private int north, south, west, east, up, down;
     // private int up,down;
 
     // Start of Telescoping Constructors
@@ -126,6 +128,26 @@ class Room {
         this.west = W;
     }
 
+    // up
+    public int getUp(){					// getter function
+    	return up;
+    }
+
+    public void setUp(int up){			// setter function
+    	this.up = up;
+    }
+
+    // down
+    public int getDown(){				// getter function
+    	return down;
+    }
+
+    public void setDown(int down){		// setter function
+    	this.down = down;
+    }
+
+
+
     public String toString(){ // toString for the Rooms
         String temp = ("\n"+getName() + ". " + getDescription() + ".\n");
         if(getN() >= 0){
@@ -139,6 +161,12 @@ class Room {
         }
         if(getW() >= 0){
             temp += "There is an exit west\n";
+        }
+        if(getUp() >= 0){
+        	temp += "There is an exit up above\n";
+        }
+        if(getDown() >= 0){
+        	temp += "There is an exit down below\n";
         }
         printItems(); // will print out the items in the room before the description and name of a room
         return temp;

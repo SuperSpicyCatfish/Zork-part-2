@@ -18,13 +18,13 @@ import java.util.Scanner;
 class Characters{
 	Scanner scan = new Scanner(System.in);
 
-	private Room theRoom; // the Room the main character is in
+	private Room theRoom; 											// the Room the main character is in
 	private String name;
 	private String description;
 	private final int SIZE = 10;
-	private int MAX_HEALTH;	// max health a player can have
-	private int health; // current health
-	private ArrayList<Items> aItems = new ArrayList<Items>(); // limiting Characters to only 10 items
+	private int MAX_HEALTH;											// max health a player can have
+	private int health; 											// current health
+	private ArrayList<Items> aItems = new ArrayList<Items>(); 		// limiting Characters to only 10 items
 
 	// Start of Telescoping Constructors
 	public Characters(){
@@ -40,7 +40,7 @@ class Characters{
 	}
 
 	public Characters(String name,String description, int health){
-		this(name,description,health,new Room()); 					//*** unsure if this is works ***
+		this(name,description,health,new Room()); 					//*** unsure if this works ***
 	}
 
 	public Characters(String name,String description, int health, Room theRoom){
